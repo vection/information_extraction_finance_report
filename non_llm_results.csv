@@ -1,0 +1,6 @@
+metric_name,pdf_extraction_Q2_24,pdf_extraction_Q3_24,excel_extraction_Q2_24,excel_extraction_Q3_24,Q2_Match,Q3_Match
+"Total revenues, net of interest expense","20,139","20,315",20139.0,20315.0,True,True
+Citigroup's net income,"$3,217","$3,238",3217.0,3238.0,True,True
+Book value per share,$99.70,$101.91,99.7,101.91,True,True
+Tangible book value per share,$87.53,$89.67,87.53,89.67,True,True
+Common Equity Tier 1 (CET1) Capital ratio,13.6%,13.7%,0.1359,0.137,False,False
