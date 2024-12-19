@@ -1,5 +1,5 @@
 from openpyxl import load_workbook
-import fitz
+import pymupdf
 from utils import find_tables_pdf, find_tables_excel, clean_and_compare
 import pandas as pd
 from llm import extract_llm
@@ -9,7 +9,7 @@ from llm import extract_llm
 def extract_metrics(file_url):
     """
     Non LLM method for extraction of metrics from PDF/Excel file
-    :param file_url: PDF/Excel file
+    :param file_url: str PDF/Excel file
     :return: dataframe containing metric name with values
     """
     summary = pd.DataFrame()
@@ -33,7 +33,7 @@ def extract_metrics(file_url):
 
 
     elif file_url.split('.')[-1] == 'pdf':
-        doc = fitz.open(file_url)
+        doc = pymupdf.open(file_url)
         page = doc.load_page(1)
         metrics = find_tables_pdf(page)
 
@@ -47,7 +47,7 @@ def extract_metrics(file_url):
 def extract_metrics_llm(file_url):
     """
     LLM based extraction method
-    :param file_url: PDF/Excel file
+    :param file_url: str PDF/Excel file
     :return: dataframe containing metric name with values.
     """
     summary = pd.DataFrame()
@@ -82,7 +82,7 @@ def extract_metrics_llm(file_url):
         summary['excel_extraction_Q3_24'] = metrics["Q3'24"].values()
 
     elif file_url.split('.')[-1] == 'pdf':
-        doc = fitz.open(file_url)
+        doc = pymupdf.open(file_url)
         page = doc.load_page(1)
         metrics = extract_llm(page.get_text())
 
